@@ -1,0 +1,37 @@
+Lab: Implementing the ArrayList Class
+Gregory Garcia, Amanda Hinchman-Dominguez | April 4, 2015
+The add Methods
+ 1. Suppose n items are to be inserted into a MyArrayList object:
+ a) The array of size k must be copied into a new array of size k + 1 for each 
+    new addition. The total time would be the sum of (k + 1) + (k + 2) + ... +
+    (k + n).
+ b) The array will only need to be copied over every n/p times where p is the 
+    number that the array gets expanded when necessary. When the array fills 
+    up, then the array of size k is copied, and the size increased by 10 
+    (k+10), then, when the array fills up again, the (k+10) array is copied 
+    and the size is incremented by 10 ((k+10)+10).  Every time the array is 
+    expanded, p is incremented.
+ c) The array will only need to be copied log_2n times. If n = 2^t, then there 
+    will be t expansions. Substitute t for log_2n and we get 2n - 1.
+2. //shoot walker an email about the question
+3. See MyArrayList.java.
+4. It appears for the first approach, the order of the algorithm is O(1). By
+   setting the ith element to null, we know that for the action of setting
+   the ith element to null, it takes one step, making it O(1). In the second 
+   approach, the order of the algorithm is O(n). Once we find the spot, we 
+   then move to the next element, assign the second value to the first value, 
+   then continue through the rest of the array moving elements back, making 
+   the whole run at worst, O(n).
+5. After so many adds and removes, the first approach would require a counter
+   to indicate where you are at between an element and a null value.  For
+   example, if someone wanted to retrieve arr[1] in an array that had only
+   values in the first place, the middle place, and the end place while in 
+   between are null values, then we would increment count only when the element
+   we examine is not null, so we can keep track of the order of the array. 
+   For the second approach, the program merely accesses the element of the 
+   array the user wishes to retrieve or set.    
+   For the first approach's worst case scenario, the element could be at the 
+   end of the array, meaning the algorithm runs as many steps as the size of 
+   the input, which is O(n).  For the second approach, the order of the 
+   algorithm is O(1) since we know that the array is complete up to a point, 
+   which means we can just retrieve the element the user wishes to retrieve.
